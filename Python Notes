@@ -1,0 +1,32 @@
+
+
+Naming
+  Function naming rules: 
+  lowercase with words separated by underscores as necessary
+  https://www.python.org/dev/peps/pep-0008/#function-and-variable-names
+  
+  Class naming:
+    Capitalized camel case only used for python class names.
+  
+  global variables:
+    UPPERCASE 
+
+comparisons and operators
+  when using None use is rather than ==
+  
+File Handling
+  always close the file if opened or use With statement which will close file automaticaly:
+    with open('/etc/hosts') as hosts_file:
+    for line in hosts_file:
+      ...
+  check a file exists:
+    if os.path.exists("/file-path"):
+    
+
+
+For loops
+  continue to skip the rest of the logic and go back to the next iteration of the for loop
+  
+Functions
+  if there is no return it returns None by default 
+
