@@ -13,6 +13,9 @@ Naming
 
 comparisons and operators
   when using None use is rather than ==
+  "is" compares identities
+  "==" compares values
+
   
 File Handling
   always close the file if opened or use With statement which will close file automaticaly:
@@ -22,11 +25,22 @@ File Handling
   check a file exists:
     if os.path.exists("/file-path"):
     
-
+Variables
+  If you want it to become a member of your object, instead of a static member, you can define it in the constructor instead of defining in the class.
+    def __init__(self):
+     self.hostname = createNRNSATopology.get_enm_hostname()
+  config.json file for configurable variables, if they will not change then constants in the code is preferable.
+  private/protected members start with single underscore _ (this is only a convention)
+  mangling is to prevent methods/variables being overwritten when the class is extended by sub classes... variables start with double underscore __ (again only convention)
 
 For loops
   continue to skip the rest of the logic and go back to the next iteration of the for loop
   
 Functions
-  if there is no return it returns None by default 
+  if there is no return it returns None by default
+  private or protected methods start with _ as a prefix to the name. Better to keep functions private if only being used internally.
 
+Exceptions
+  better to raise specific exceptions rather than broad
+  should not call exit() in functions but in main script if it receives a specific exception.
+  
