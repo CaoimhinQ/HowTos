@@ -1,4 +1,13 @@
-
+Installing modules
+  sudo pip install <module>
+    can use --ignore-installed <module. if there are issues with dependent modules
+  sudo easy install <module>
+  
+  "Move into directory ~/Python/2.7/site-packages/
+  sudo easy_install pip.
+  sudo easy_install virtualenv.
+  sudo easy_install nose.
+  sudo easy_install distribute."
 
 Naming
   Function naming rules: 
