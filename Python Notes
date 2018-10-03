@@ -61,3 +61,23 @@ Exceptions
   better to raise specific exceptions rather than broad
   should not call exit() in functions but in main script if it receives a specific exception.
   
+Testing
+
+import unittest
+from src.project.log import Logger
+from utils import MockLoggingHandler
+
+class BaseTest(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        super(BaseTest, self).__init__(*args, **kwargs)
+        Logger.setup_log(MockLoggingHandler())
+        Logger.logger.handlers = [MockLoggingHandler()]
+        Logger.logger.handlers[0].reset()
+
+    def setUp(self):
+        Logger.logger.handlers[0].reset()
+
+    def assertIn(self, expected, text, msg=""):
+        self.assertTrue(expected in text,
+                        '"%s" not in "%s". %s' % (expected, text, msg))
+  
