@@ -80,4 +80,35 @@ class BaseTest(unittest.TestCase):
     def assertIn(self, expected, text, msg=""):
         self.assertTrue(expected in text,
                         '"%s" not in "%s". %s' % (expected, text, msg))
+                        
+import sys
+import unittest
+import time
+from src.nr_nsa_systems_topology.log import NRNSALogger
+
+from utils import mock_stdout
+from utils import MockLoggingHandler
+from base import BaseTest
+
+MESSAGE = "Testing NRNSALogger class"
+
+
+class NRNSALoggerTest(BaseTest):
+
+    all_methods = ['info', 'warning', 'error', 'debug', 'critical']
+
+    def setUp(self):
+        super(NRNSALoggerTest, self).setUp
+        NRNSALogger().logger.handlers[0].reset()
+        self.log = NRNSALogger()
+        self.verbose_state = self.log.Settings.verbose
+
+    def tearDown(self):
+        self.log.Settings.verbose = self.verbose_state
+
+    @mock_stdout
+    def test_log_prints_method(self):
+        self.log.Settings.verbose = True
+        self.log.prints(MESSAGE)
+        self.assertEqual(self._mock_stdout.getvalue().strip(), MESSAGE)
   
